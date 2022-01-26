@@ -2,7 +2,7 @@ import walletStatusTypes from '@/context/wallet-status-types'
 import networkConfig from '@/networkConfig'
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3')
 
-const DEFAULT_NETWORK = networkConfig.getDefaultNetworkId().toString(16)
+const DEFAULT_NETWORK = '0x' + networkConfig.defaultNetworkId.toString(16)
 
 export default {
   async connect({ commit, dispatch }) {

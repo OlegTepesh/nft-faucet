@@ -1,5 +1,5 @@
 export default {
-  getDefaultNetworkId: () => 3, // ropsten
+  defaultNetworkId: 3, // ropsten
 
   netId3: {
     verifyingContract: '0xeb404f026c128c0be32e64398b8fb378045da057',
