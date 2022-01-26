@@ -1,0 +1,43 @@
+{
+  "name": "nft-faucet",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:js && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
+  },
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.1.9",
+    "@marcius-studio/vue-notice": "^0.1.0",
+    "@nuxtjs/axios": "^5.13.6",
+    "core-js": "^3.19.3",
+    "dotenv": "^14.3.2",
+    "noty": "^3.2.0-beta-deprecated",
+    "nuxt": "^2.15.8",
+    "nuxt-buefy": "^0.4.13",
+    "vee-validate": "^3.4.14",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@mole-inc/nuxt-validate": "^1.1.0",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "^2.5.1",
+    "sass": "^1.48.0",
+    "sass-loader": "^10.2.1"
+  }
+}
