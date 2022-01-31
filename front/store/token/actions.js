@@ -1,8 +1,7 @@
 import networkConfig from '@/networkConfig'
 import contractABI from '@/abi/NFTFaucet.abi.json'
 
-const loadContract = ({ wallet }) => {
-  const { ethAccount, chainId } = wallet
+const loadContract = ({ ethAccount, chainId }) => {
   const contractAddress = networkConfig[`netId${chainId}`].verifyingContract
   return new window.web3.eth.Contract(contractABI, contractAddress, {
     from: ethAccount,
@@ -12,7 +11,8 @@ const loadContract = ({ wallet }) => {
 export default {
   getContractAddress({ rootState, commit }) {
     try {
-      const contract = loadContract(rootState)
+      const { ethAccount, chainId } = rootState.wallet
+      const contract = loadContract({ ethAccount, chainId })
       commit('setContractAddress', contract._address)
     } catch (e) {
       this.$notify.error('Loading contract error')
@@ -22,8 +22,8 @@ export default {
 
   async getTokenBalance({ rootState, commit }) {
     try {
-      const contract = loadContract(rootState)
-      const { ethAccount } = rootState.wallet
+      const { ethAccount, chainId } = rootState.wallet
+      const contract = loadContract({ ethAccount, chainId })
       const data = contract.methods.balanceOf(ethAccount).encodeABI()
       const params = {
         method: 'eth_call',
@@ -48,8 +48,8 @@ export default {
   async mint({ rootState, commit }, { to, amount }) {
     try {
       const strAmount = amount.toString()
-      const { ethAccount } = rootState.wallet
-      const contract = loadContract(rootState)
+      const { ethAccount, chainId } = rootState.wallet
+      const contract = loadContract({ ethAccount, chainId })
 
       const data = contract.methods.mint(to, strAmount).encodeABI()
       const gas = await contract.methods.mint(to, strAmount).estimateGas()
